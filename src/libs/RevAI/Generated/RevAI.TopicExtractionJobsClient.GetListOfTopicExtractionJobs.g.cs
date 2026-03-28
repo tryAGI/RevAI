@@ -194,7 +194,7 @@ namespace RevAI
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<global::RevAI.TopicExtractionJob>), JsonSerializerContext) as global::System.Collections.Generic.IList<global::RevAI.TopicExtractionJob> ??
+                        (global::System.Collections.Generic.IList<global::RevAI.TopicExtractionJob>?)global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<global::RevAI.TopicExtractionJob>), JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -225,7 +225,7 @@ namespace RevAI
                     ).ConfigureAwait(false);
 
                     return
-                        await global::System.Text.Json.JsonSerializer.DeserializeAsync(__content, typeof(global::System.Collections.Generic.IList<global::RevAI.TopicExtractionJob>), JsonSerializerContext).ConfigureAwait(false) as global::System.Collections.Generic.IList<global::RevAI.TopicExtractionJob> ??
+                        (global::System.Collections.Generic.IList<global::RevAI.TopicExtractionJob>?)await global::System.Text.Json.JsonSerializer.DeserializeAsync(__content, typeof(global::System.Collections.Generic.IList<global::RevAI.TopicExtractionJob>), JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
