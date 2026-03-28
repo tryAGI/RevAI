@@ -1,0 +1,18 @@
+#nullable enable
+
+namespace RevAI
+{
+    public partial interface ILanguageIdentificationResultsClient
+    {
+        /// <summary>
+        /// Get Language Identification Result<br/>
+        /// Returns the language identification result for a completed job.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::RevAI.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::RevAI.LanguageIdentificationResult> GetLanguageIdentificationResultAsync(
+            string id,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}

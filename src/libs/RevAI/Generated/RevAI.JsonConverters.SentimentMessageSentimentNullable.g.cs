@@ -1,0 +1,60 @@
+#nullable enable
+
+namespace RevAI.JsonConverters
+{
+    /// <inheritdoc />
+    public sealed class SentimentMessageSentimentNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RevAI.SentimentMessageSentiment?>
+    {
+        /// <inheritdoc />
+        public override global::RevAI.SentimentMessageSentiment? Read(
+            ref global::System.Text.Json.Utf8JsonReader reader,
+            global::System.Type typeToConvert,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            switch (reader.TokenType)
+            {
+                case global::System.Text.Json.JsonTokenType.String:
+                {
+                    var stringValue = reader.GetString();
+                    if (stringValue != null)
+                    {
+                        return global::RevAI.SentimentMessageSentimentExtensions.ToEnum(stringValue);
+                    }
+                    
+                    break;
+                }
+                case global::System.Text.Json.JsonTokenType.Number:
+                {
+                    var numValue = reader.GetInt32();
+                    return (global::RevAI.SentimentMessageSentiment)numValue;
+                }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::RevAI.SentimentMessageSentiment?);
+                }
+                default:
+                    throw new global::System.ArgumentOutOfRangeException(nameof(reader));
+            }
+
+            return default;
+        }
+
+        /// <inheritdoc />
+        public override void Write(
+            global::System.Text.Json.Utf8JsonWriter writer,
+            global::RevAI.SentimentMessageSentiment? value,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
+
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::RevAI.SentimentMessageSentimentExtensions.ToValueString(value.Value));
+            }
+        }
+    }
+}
