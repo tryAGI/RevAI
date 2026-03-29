@@ -3,7 +3,7 @@
 !!! tip "Cross-SDK comparison"
     See the [centralized MEAI documentation](https://tryagi.github.io/docs/meai/) for feature matrices and comparisons across all tryAGI SDKs.
 
-The RevAI SDK implements `ISpeechToTextClient` from [Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai) for speech-to-text transcription, plus `AIFunction` tool wrappers for use with any `IChatClient`.
+The RevAI SDK implements `ISpeechToTextClient` and provides `AIFunction` tool wrappers, all compatible with [Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai).
 
 ## Installation
 
