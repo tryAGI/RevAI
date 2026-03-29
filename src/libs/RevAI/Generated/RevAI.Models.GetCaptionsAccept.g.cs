@@ -11,11 +11,11 @@ namespace RevAI
         /// <summary>
         /// application/x-subrip for SRT or text/vtt for VTT
         /// </summary>
-        ApplicationXSubrip,
+        ApplicationDividexSubrip,
         /// <summary>
         /// application/x-subrip for SRT or text/vtt for VTT
         /// </summary>
-        TextVtt,
+        TextDividevtt,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace RevAI
         {
             return value switch
             {
-                GetCaptionsAccept.ApplicationXSubrip => "application/x-subrip",
-                GetCaptionsAccept.TextVtt => "text/vtt",
+                GetCaptionsAccept.ApplicationDividexSubrip => "application/x-subrip",
+                GetCaptionsAccept.TextDividevtt => "text/vtt",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace RevAI
         {
             return value switch
             {
-                "application/x-subrip" => GetCaptionsAccept.ApplicationXSubrip,
-                "text/vtt" => GetCaptionsAccept.TextVtt,
+                "application/x-subrip" => GetCaptionsAccept.ApplicationDividexSubrip,
+                "text/vtt" => GetCaptionsAccept.TextDividevtt,
                 _ => null,
             };
         }
