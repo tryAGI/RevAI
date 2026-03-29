@@ -11,11 +11,11 @@ namespace RevAI
         /// <summary>
         /// application/vnd.rev.transcript.v1.0+json for JSON or text/plain for plain text
         /// </summary>
-        ApplicationDividevndRevTranscriptV10Plusjson,
+        ApplicationVndRevTranscriptV10Plusjson,
         /// <summary>
         /// application/vnd.rev.transcript.v1.0+json for JSON or text/plain for plain text
         /// </summary>
-        TextDivideplain,
+        TextPlain,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace RevAI
         {
             return value switch
             {
-                GetTranscriptAccept.ApplicationDividevndRevTranscriptV10Plusjson => "application/vnd.rev.transcript.v1.0+json",
-                GetTranscriptAccept.TextDivideplain => "text/plain",
+                GetTranscriptAccept.ApplicationVndRevTranscriptV10Plusjson => "application/vnd.rev.transcript.v1.0+json",
+                GetTranscriptAccept.TextPlain => "text/plain",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace RevAI
         {
             return value switch
             {
-                "application/vnd.rev.transcript.v1.0+json" => GetTranscriptAccept.ApplicationDividevndRevTranscriptV10Plusjson,
-                "text/plain" => GetTranscriptAccept.TextDivideplain,
+                "application/vnd.rev.transcript.v1.0+json" => GetTranscriptAccept.ApplicationVndRevTranscriptV10Plusjson,
+                "text/plain" => GetTranscriptAccept.TextPlain,
                 _ => null,
             };
         }
