@@ -5,6 +5,25 @@ namespace RevAI
 {
     public partial class TranscriptionJobsClient
     {
+
+
+        private static readonly global::RevAI.EndPointSecurityRequirement s_GetTranscriptionJobByIdSecurityRequirement0 =
+            new global::RevAI.EndPointSecurityRequirement
+            {
+                Authorizations = new global::RevAI.EndPointAuthorizationRequirement[]
+                {                    new global::RevAI.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::RevAI.EndPointSecurityRequirement[] s_GetTranscriptionJobByIdSecurityRequirements =
+            new global::RevAI.EndPointSecurityRequirement[]
+            {                s_GetTranscriptionJobByIdSecurityRequirement0,
+            };
         partial void PrepareGetTranscriptionJobByIdArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string id);
@@ -38,9 +57,15 @@ namespace RevAI
                 httpClient: HttpClient,
                 id: ref id);
 
+
+            var __authorizations = global::RevAI.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_GetTranscriptionJobByIdSecurityRequirements,
+                operationName: "GetTranscriptionJobByIdAsync");
+
             var __pathBuilder = new global::RevAI.PathBuilder(
                 path: $"/speechtotext/v1/jobs/{id}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -50,7 +75,7 @@ namespace RevAI
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

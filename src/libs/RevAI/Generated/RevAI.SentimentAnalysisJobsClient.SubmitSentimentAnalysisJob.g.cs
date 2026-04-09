@@ -5,6 +5,25 @@ namespace RevAI
 {
     public partial class SentimentAnalysisJobsClient
     {
+
+
+        private static readonly global::RevAI.EndPointSecurityRequirement s_SubmitSentimentAnalysisJobSecurityRequirement0 =
+            new global::RevAI.EndPointSecurityRequirement
+            {
+                Authorizations = new global::RevAI.EndPointAuthorizationRequirement[]
+                {                    new global::RevAI.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::RevAI.EndPointSecurityRequirement[] s_SubmitSentimentAnalysisJobSecurityRequirements =
+            new global::RevAI.EndPointSecurityRequirement[]
+            {                s_SubmitSentimentAnalysisJobSecurityRequirement0,
+            };
         partial void PrepareSubmitSentimentAnalysisJobArguments(
             global::System.Net.Http.HttpClient httpClient,
             global::RevAI.SubmitSentimentAnalysisJobRequest request);
@@ -41,9 +60,15 @@ namespace RevAI
                 httpClient: HttpClient,
                 request: request);
 
+
+            var __authorizations = global::RevAI.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_SubmitSentimentAnalysisJobSecurityRequirements,
+                operationName: "SubmitSentimentAnalysisJobAsync");
+
             var __pathBuilder = new global::RevAI.PathBuilder(
                 path: "/sentiment_analysis/v1/jobs",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -53,7 +78,7 @@ namespace RevAI
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

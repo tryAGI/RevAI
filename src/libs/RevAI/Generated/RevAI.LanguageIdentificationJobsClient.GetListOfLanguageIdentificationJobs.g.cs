@@ -5,6 +5,25 @@ namespace RevAI
 {
     public partial class LanguageIdentificationJobsClient
     {
+
+
+        private static readonly global::RevAI.EndPointSecurityRequirement s_GetListOfLanguageIdentificationJobsSecurityRequirement0 =
+            new global::RevAI.EndPointSecurityRequirement
+            {
+                Authorizations = new global::RevAI.EndPointAuthorizationRequirement[]
+                {                    new global::RevAI.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::RevAI.EndPointSecurityRequirement[] s_GetListOfLanguageIdentificationJobsSecurityRequirements =
+            new global::RevAI.EndPointSecurityRequirement[]
+            {                s_GetListOfLanguageIdentificationJobsSecurityRequirement0,
+            };
         partial void PrepareGetListOfLanguageIdentificationJobsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref int? limit,
@@ -43,13 +62,19 @@ namespace RevAI
                 limit: ref limit,
                 startingAfter: ref startingAfter);
 
+
+            var __authorizations = global::RevAI.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_GetListOfLanguageIdentificationJobsSecurityRequirements,
+                operationName: "GetListOfLanguageIdentificationJobsAsync");
+
             var __pathBuilder = new global::RevAI.PathBuilder(
                 path: "/languageid/v1/jobs",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("limit", limit?.ToString())
                 .AddOptionalParameter("starting_after", startingAfter) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -59,7 +84,7 @@ namespace RevAI
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
