@@ -5,6 +5,25 @@ namespace RevAI
 {
     public partial class TranscriptClient
     {
+
+
+        private static readonly global::RevAI.EndPointSecurityRequirement s_GetTranscriptSecurityRequirement0 =
+            new global::RevAI.EndPointSecurityRequirement
+            {
+                Authorizations = new global::RevAI.EndPointAuthorizationRequirement[]
+                {                    new global::RevAI.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::RevAI.EndPointSecurityRequirement[] s_GetTranscriptSecurityRequirements =
+            new global::RevAI.EndPointSecurityRequirement[]
+            {                s_GetTranscriptSecurityRequirement0,
+            };
         partial void PrepareGetTranscriptArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::RevAI.GetTranscriptAccept? accept,
@@ -45,9 +64,15 @@ namespace RevAI
                 accept: ref accept,
                 id: ref id);
 
+
+            var __authorizations = global::RevAI.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_GetTranscriptSecurityRequirements,
+                operationName: "GetTranscriptAsync");
+
             var __pathBuilder = new global::RevAI.PathBuilder(
                 path: $"/speechtotext/v1/jobs/{id}/transcript",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -57,7 +82,7 @@ namespace RevAI
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

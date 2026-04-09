@@ -5,6 +5,25 @@ namespace RevAI
 {
     public partial class CaptionsClient
     {
+
+
+        private static readonly global::RevAI.EndPointSecurityRequirement s_GetCaptionsSecurityRequirement0 =
+            new global::RevAI.EndPointSecurityRequirement
+            {
+                Authorizations = new global::RevAI.EndPointAuthorizationRequirement[]
+                {                    new global::RevAI.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::RevAI.EndPointSecurityRequirement[] s_GetCaptionsSecurityRequirements =
+            new global::RevAI.EndPointSecurityRequirement[]
+            {                s_GetCaptionsSecurityRequirement0,
+            };
         partial void PrepareGetCaptionsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::RevAI.GetCaptionsAccept? accept,
@@ -50,12 +69,18 @@ namespace RevAI
                 speakerChannel: ref speakerChannel,
                 id: ref id);
 
+
+            var __authorizations = global::RevAI.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_GetCaptionsSecurityRequirements,
+                operationName: "GetCaptionsAsync");
+
             var __pathBuilder = new global::RevAI.PathBuilder(
                 path: $"/speechtotext/v1/jobs/{id}/captions",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("speaker_channel", speakerChannel?.ToString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -65,7 +90,7 @@ namespace RevAI
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

@@ -4,7 +4,7 @@
 namespace RevAI
 {
     /// <summary>
-    /// Retrieve caption output (SRT/VTT)<br/>
+    /// Retrieve caption output (SRT/VTT).<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -13,7 +13,7 @@ namespace RevAI
         /// <summary>
         /// Rev.ai API
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.rev.ai";
+        public const string DefaultBaseUrl = "https://api.rev.ai/";
 
         private bool _disposeHttpClient = true;
 
