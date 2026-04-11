@@ -130,10 +130,10 @@ namespace RevAI
                 } 
             }
 
-                if (accept != default)
-                {
-                    __httpRequest.Headers.TryAddWithoutValidation("Accept", accept?.ToValueString() ?? string.Empty);
-                }
+            if (accept != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("Accept", accept?.ToValueString() ?? string.Empty);
+            }
 
                 global::RevAI.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
