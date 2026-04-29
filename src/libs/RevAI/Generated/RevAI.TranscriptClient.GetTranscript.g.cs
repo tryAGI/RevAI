@@ -139,7 +139,7 @@ namespace RevAI
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     accept: accept,
-                    id: id);
+                    id: id!);
 
                 return __httpRequest;
             }
