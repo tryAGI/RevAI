@@ -148,7 +148,7 @@ namespace RevAI
                     httpRequestMessage: __httpRequest,
                     accept: accept,
                     speakerChannel: speakerChannel,
-                    id: id);
+                    id: id!);
 
                 return __httpRequest;
             }
