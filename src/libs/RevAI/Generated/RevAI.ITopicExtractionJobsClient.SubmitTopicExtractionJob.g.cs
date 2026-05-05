@@ -21,6 +21,19 @@ namespace RevAI
         /// Submit Topic Extraction Job<br/>
         /// Starts an asynchronous topic extraction job. Input can be plain text, a JSON transcript, or reference a completed transcription job.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::RevAI.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::RevAI.AutoSDKHttpResponse<global::RevAI.TopicExtractionJob>> SubmitTopicExtractionJobAsResponseAsync(
+
+            global::RevAI.SubmitTopicExtractionJobRequest request,
+            global::RevAI.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Submit Topic Extraction Job<br/>
+        /// Starts an asynchronous topic extraction job. Input can be plain text, a JSON transcript, or reference a completed transcription job.
+        /// </summary>
         /// <param name="json">
         /// Rev.ai Transcript
         /// </param>
