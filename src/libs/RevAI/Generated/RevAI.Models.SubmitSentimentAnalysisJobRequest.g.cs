@@ -96,5 +96,6 @@ namespace RevAI
         public SubmitSentimentAnalysisJobRequest()
         {
         }
+
     }
 }

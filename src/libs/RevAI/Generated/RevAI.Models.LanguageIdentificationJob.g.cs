@@ -134,5 +134,6 @@ namespace RevAI
         public LanguageIdentificationJob()
         {
         }
+
     }
 }

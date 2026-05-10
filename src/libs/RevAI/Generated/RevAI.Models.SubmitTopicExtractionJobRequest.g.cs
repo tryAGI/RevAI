@@ -88,5 +88,6 @@ namespace RevAI
         public SubmitTopicExtractionJobRequest()
         {
         }
+
     }
 }
