@@ -152,5 +152,6 @@ namespace RevAI
         public SubmitTranscriptionJobRequest()
         {
         }
+
     }
 }

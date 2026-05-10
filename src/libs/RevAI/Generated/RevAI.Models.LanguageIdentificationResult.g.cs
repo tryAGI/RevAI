@@ -52,5 +52,6 @@ namespace RevAI
         public LanguageIdentificationResult()
         {
         }
+
     }
 }

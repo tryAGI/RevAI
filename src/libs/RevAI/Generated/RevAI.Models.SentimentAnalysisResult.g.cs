@@ -39,5 +39,6 @@ namespace RevAI
         public SentimentAnalysisResult()
         {
         }
+
     }
 }

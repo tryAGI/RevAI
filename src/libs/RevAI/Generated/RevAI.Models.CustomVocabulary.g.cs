@@ -42,5 +42,6 @@ namespace RevAI
         public CustomVocabulary()
         {
         }
+
     }
 }

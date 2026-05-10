@@ -61,5 +61,6 @@ namespace RevAI
         public SubmitLanguageIdentificationJobRequest2()
         {
         }
+
     }
 }

@@ -160,5 +160,6 @@ namespace RevAI
         public TranscriptionJobOptions()
         {
         }
+
     }
 }
