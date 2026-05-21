@@ -58,5 +58,6 @@ namespace RevAI
         public Account()
         {
         }
+
     }
 }

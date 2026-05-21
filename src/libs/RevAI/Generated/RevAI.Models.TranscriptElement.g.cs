@@ -86,5 +86,6 @@ namespace RevAI
         public TranscriptElement()
         {
         }
+
     }
 }

@@ -143,5 +143,6 @@ namespace RevAI
         public TopicExtractionJob()
         {
         }
+
     }
 }

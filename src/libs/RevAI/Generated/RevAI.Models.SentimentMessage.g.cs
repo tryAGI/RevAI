@@ -119,5 +119,6 @@ namespace RevAI
         public SentimentMessage()
         {
         }
+
     }
 }

@@ -155,5 +155,6 @@ namespace RevAI
         public SentimentAnalysisJob()
         {
         }
+
     }
 }

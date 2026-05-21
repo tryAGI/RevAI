@@ -238,5 +238,6 @@ namespace RevAI
         public TranscriptionJob()
         {
         }
+
     }
 }

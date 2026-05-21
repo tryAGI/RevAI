@@ -44,7 +44,7 @@ namespace RevAI
         /// <summary>
         /// Account information.
         /// </summary>
-        public AccountClient Account => new AccountClient(HttpClient, authorizations: Authorizations, options: Options)
+        public AccountClient Account => new AccountClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -53,7 +53,7 @@ namespace RevAI
         /// <summary>
         /// Retrieve caption output (SRT/VTT).
         /// </summary>
-        public CaptionsClient Captions => new CaptionsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public CaptionsClient Captions => new CaptionsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -62,7 +62,7 @@ namespace RevAI
         /// <summary>
         /// Language identification from audio.
         /// </summary>
-        public LanguageIdentificationJobsClient LanguageIdentificationJobs => new LanguageIdentificationJobsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public LanguageIdentificationJobsClient LanguageIdentificationJobs => new LanguageIdentificationJobsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -71,7 +71,7 @@ namespace RevAI
         /// <summary>
         /// Retrieve language identification results.
         /// </summary>
-        public LanguageIdentificationResultsClient LanguageIdentificationResults => new LanguageIdentificationResultsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public LanguageIdentificationResultsClient LanguageIdentificationResults => new LanguageIdentificationResultsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -80,7 +80,7 @@ namespace RevAI
         /// <summary>
         /// Sentiment analysis on text or transcripts.
         /// </summary>
-        public SentimentAnalysisJobsClient SentimentAnalysisJobs => new SentimentAnalysisJobsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public SentimentAnalysisJobsClient SentimentAnalysisJobs => new SentimentAnalysisJobsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -89,7 +89,7 @@ namespace RevAI
         /// <summary>
         /// Retrieve sentiment analysis results.
         /// </summary>
-        public SentimentAnalysisResultsClient SentimentAnalysisResults => new SentimentAnalysisResultsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public SentimentAnalysisResultsClient SentimentAnalysisResults => new SentimentAnalysisResultsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -98,7 +98,7 @@ namespace RevAI
         /// <summary>
         /// Topic extraction from text or transcripts.
         /// </summary>
-        public TopicExtractionJobsClient TopicExtractionJobs => new TopicExtractionJobsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public TopicExtractionJobsClient TopicExtractionJobs => new TopicExtractionJobsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -107,7 +107,7 @@ namespace RevAI
         /// <summary>
         /// Retrieve topic extraction results.
         /// </summary>
-        public TopicExtractionResultsClient TopicExtractionResults => new TopicExtractionResultsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public TopicExtractionResultsClient TopicExtractionResults => new TopicExtractionResultsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -116,7 +116,7 @@ namespace RevAI
         /// <summary>
         /// Retrieve transcription results.
         /// </summary>
-        public TranscriptClient Transcript => new TranscriptClient(HttpClient, authorizations: Authorizations, options: Options)
+        public TranscriptClient Transcript => new TranscriptClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -125,7 +125,7 @@ namespace RevAI
         /// <summary>
         /// Async speech-to-text transcription.
         /// </summary>
-        public TranscriptionJobsClient TranscriptionJobs => new TranscriptionJobsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public TranscriptionJobsClient TranscriptionJobs => new TranscriptionJobsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -154,6 +154,27 @@ namespace RevAI
         }
 
         /// <summary>
+        /// Creates a new instance of the RevAIClient with explicit options but no base URL override.
+        /// Skips passing <c>baseUri</c> so the default base URL from the OpenAPI spec applies.
+        /// </summary>
+        /// <param name="httpClient">The HttpClient instance. If not provided, a new one will be created.</param>
+        /// <param name="authorizations">The authorizations to use for the requests.</param>
+        /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
+        /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
+        public RevAIClient(
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Collections.Generic.List<global::RevAI.EndPointAuthorization>? authorizations,
+            global::RevAI.AutoSDKClientOptions? options,
+            bool disposeHttpClient = true) : this(
+                httpClient,
+                baseUri: null,
+                authorizations,
+                options,
+                disposeHttpClient: disposeHttpClient)
+        {
+        }
+
+        /// <summary>
         /// Creates a new instance of the RevAIClient.
         /// If no httpClient is provided, a new one will be created.
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
@@ -164,10 +185,10 @@ namespace RevAI
         /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
         /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
         public RevAIClient(
-            global::System.Net.Http.HttpClient? httpClient = null,
-            global::System.Uri? baseUri = null,
-            global::System.Collections.Generic.List<global::RevAI.EndPointAuthorization>? authorizations = null,
-            global::RevAI.AutoSDKClientOptions? options = null,
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Uri? baseUri,
+            global::System.Collections.Generic.List<global::RevAI.EndPointAuthorization>? authorizations,
+            global::RevAI.AutoSDKClientOptions? options,
             bool disposeHttpClient = true)
         {
 
