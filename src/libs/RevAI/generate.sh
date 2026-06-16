@@ -1,4 +1,9 @@
-dotnet tool install --global autosdk.cli --prerelease
+install_autosdk_cli() {
+  dotnet tool update --global autosdk.cli --prerelease >/dev/null 2>&1 || \
+    dotnet tool install --global autosdk.cli --prerelease
+}
+
+install_autosdk_cli
 rm -rf Generated
 # Spec is manually maintained (combines STT, Sentiment Analysis, Topic Extraction, Language ID)
 # Original STT-only spec from: https://raw.githubusercontent.com/APIs-guru/openapi-directory/main/APIs/rev.ai/v1/openapi.yaml
