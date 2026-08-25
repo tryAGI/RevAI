@@ -3,11 +3,11 @@
 
 namespace RevAI
 {
-    public partial class TranscriptClient
+    public partial class CaptionsClient
     {
 
 
-        private static readonly global::RevAI.EndPointSecurityRequirement s_GetTranscriptSecurityRequirement0 =
+        private static readonly global::RevAI.EndPointSecurityRequirement s_GetCaptionsAsTextSecurityRequirement0 =
             new global::RevAI.EndPointSecurityRequirement
             {
                 Authorizations = new global::RevAI.EndPointAuthorizationRequirement[]
@@ -21,48 +21,53 @@ namespace RevAI
                     },
                 },
             };
-        private static readonly global::RevAI.EndPointSecurityRequirement[] s_GetTranscriptSecurityRequirements =
+        private static readonly global::RevAI.EndPointSecurityRequirement[] s_GetCaptionsAsTextSecurityRequirements =
             new global::RevAI.EndPointSecurityRequirement[]
-            {                s_GetTranscriptSecurityRequirement0,
+            {                s_GetCaptionsAsTextSecurityRequirement0,
             };
-        partial void PrepareGetTranscriptArguments(
+        partial void PrepareGetCaptionsAsTextArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref global::RevAI.GetTranscriptAccept? accept,
+            ref global::RevAI.GetCaptionsAccept? accept,
+            ref int? speakerChannel,
             ref string id);
-        partial void PrepareGetTranscriptRequest(
+        partial void PrepareGetCaptionsAsTextRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::RevAI.GetTranscriptAccept? accept,
+            global::RevAI.GetCaptionsAccept? accept,
+            int? speakerChannel,
             string id);
-        partial void ProcessGetTranscriptResponse(
+        partial void ProcessGetCaptionsAsTextResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetTranscriptResponseContent(
+        partial void ProcessGetCaptionsAsTextResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get Transcript<br/>
-        /// Returns the transcript for a completed transcription job in JSON or plain text format.
+        /// Get Captions<br/>
+        /// Returns caption output for a transcription job in SRT or VTT format.
         /// </summary>
         /// <param name="accept">
-        /// Default Value: application/vnd.rev.transcript.v1.0+json
+        /// Default Value: application/x-subrip
         /// </param>
+        /// <param name="speakerChannel"></param>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RevAI.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::RevAI.Transcript> GetTranscriptAsync(
+        public async global::System.Threading.Tasks.Task<string> GetCaptionsAsTextAsync(
             string id,
-            global::RevAI.GetTranscriptAccept? accept = default,
+            global::RevAI.GetCaptionsAccept? accept = default,
+            int? speakerChannel = default,
             global::RevAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await GetTranscriptAsResponseAsync(
+            var __response = await GetCaptionsAsTextAsResponseAsync(
                 id: id,
                 accept: accept,
+                speakerChannel: speakerChannel,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -70,34 +75,37 @@ namespace RevAI
             return __response.Body;
         }
         /// <summary>
-        /// Get Transcript<br/>
-        /// Returns the transcript for a completed transcription job in JSON or plain text format.
+        /// Get Captions<br/>
+        /// Returns caption output for a transcription job in SRT or VTT format.
         /// </summary>
         /// <param name="accept">
-        /// Default Value: application/vnd.rev.transcript.v1.0+json
+        /// Default Value: application/x-subrip
         /// </param>
+        /// <param name="speakerChannel"></param>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RevAI.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::RevAI.AutoSDKHttpResponse<global::RevAI.Transcript>> GetTranscriptAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::RevAI.AutoSDKHttpResponse<string>> GetCaptionsAsTextAsResponseAsync(
             string id,
-            global::RevAI.GetTranscriptAccept? accept = default,
+            global::RevAI.GetCaptionsAccept? accept = default,
+            int? speakerChannel = default,
             global::RevAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetTranscriptArguments(
+            PrepareGetCaptionsAsTextArguments(
                 httpClient: HttpClient,
                 accept: ref accept,
+                speakerChannel: ref speakerChannel,
                 id: ref id);
 
 
             var __authorizations = global::RevAI.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetTranscriptSecurityRequirements,
-                operationName: "GetTranscriptAsync");
+                securityRequirements: s_GetCaptionsAsTextSecurityRequirements,
+                operationName: "GetCaptionsAsTextAsync");
 
             using var __timeoutCancellationTokenSource = global::RevAI.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -117,8 +125,11 @@ namespace RevAI
             {
 
                             var __pathBuilder = new global::RevAI.PathBuilder(
-                                path: $"/speechtotext/v1/jobs/{id}/transcript",
+                                path: $"/speechtotext/v1/jobs/{id}/captions",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("speaker_channel", speakerChannel?.ToString())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::RevAI.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -134,7 +145,7 @@ namespace RevAI
 
                 __httpRequest.Headers.TryAddWithoutValidation(
                     "Accept",
-                    "application/vnd.rev.transcript.v1.0+json");
+                    "text/vtt");
 
             foreach (var __authorization in __authorizations)
             {
@@ -166,10 +177,11 @@ namespace RevAI
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetTranscriptRequest(
+                PrepareGetCaptionsAsTextRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     accept: accept,
+                    speakerChannel: speakerChannel,
                     id: id!);
 
                 return __httpRequest;
@@ -187,9 +199,9 @@ namespace RevAI
                     await global::RevAI.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::RevAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetTranscript",
-                                methodName: "GetTranscriptAsync",
-                                pathTemplate: "$\"/speechtotext/v1/jobs/{id}/transcript\"",
+                                operationId: "GetCaptionsAsText",
+                                methodName: "GetCaptionsAsTextAsync",
+                                pathTemplate: "$\"/speechtotext/v1/jobs/{id}/captions\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -221,9 +233,9 @@ namespace RevAI
                         await global::RevAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::RevAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetTranscript",
-                                methodName: "GetTranscriptAsync",
-                                pathTemplate: "$\"/speechtotext/v1/jobs/{id}/transcript\"",
+                                operationId: "GetCaptionsAsText",
+                                methodName: "GetCaptionsAsTextAsync",
+                                pathTemplate: "$\"/speechtotext/v1/jobs/{id}/captions\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -262,9 +274,9 @@ namespace RevAI
                         await global::RevAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::RevAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetTranscript",
-                                methodName: "GetTranscriptAsync",
-                                pathTemplate: "$\"/speechtotext/v1/jobs/{id}/transcript\"",
+                                operationId: "GetCaptionsAsText",
+                                methodName: "GetCaptionsAsTextAsync",
+                                pathTemplate: "$\"/speechtotext/v1/jobs/{id}/captions\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -302,7 +314,7 @@ namespace RevAI
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetTranscriptResponse(
+                ProcessGetCaptionsAsTextResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -310,9 +322,9 @@ namespace RevAI
                     await global::RevAI.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::RevAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetTranscript",
-                                methodName: "GetTranscriptAsync",
-                                pathTemplate: "$\"/speechtotext/v1/jobs/{id}/transcript\"",
+                                operationId: "GetCaptionsAsText",
+                                methodName: "GetCaptionsAsTextAsync",
+                                pathTemplate: "$\"/speechtotext/v1/jobs/{id}/captions\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -332,9 +344,9 @@ namespace RevAI
                     await global::RevAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::RevAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetTranscript",
-                                methodName: "GetTranscriptAsync",
-                                pathTemplate: "$\"/speechtotext/v1/jobs/{id}/transcript\"",
+                                operationId: "GetCaptionsAsText",
+                                methodName: "GetCaptionsAsTextAsync",
+                                pathTemplate: "$\"/speechtotext/v1/jobs/{id}/captions\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -424,6 +436,38 @@ namespace RevAI
                                         h => h.Value));
                             }
                             // 
+                            if ((int)__response.StatusCode == 406)
+                            {
+                                string? __content_406 = null;
+                                global::System.Exception? __exception_406 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_406 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                    else
+                                    {
+                                        __content_406 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_406 = __ex;
+                                }
+
+
+                                throw global::RevAI.ApiException.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_406 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_406,
+                                    responseBody: __content_406,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // 
                             if ((int)__response.StatusCode == 409)
                             {
                                 string? __content_409 = null;
@@ -468,7 +512,7 @@ namespace RevAI
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessGetTranscriptResponseContent(
+                                ProcessGetCaptionsAsTextResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -477,13 +521,11 @@ namespace RevAI
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::RevAI.Transcript.FromJson(__content, JsonSerializerContext) ??
-                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::RevAI.AutoSDKHttpResponse<global::RevAI.Transcript>(
+                                    return new global::RevAI.AutoSDKHttpResponse<string>(
                                         statusCode: __response.StatusCode,
                                         headers: global::RevAI.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __value);
+                                        body: __content);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -503,19 +545,17 @@ namespace RevAI
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
-                                    using var __content = await __response.Content.ReadAsStreamAsync(
+                                    var __content = await __response.Content.ReadAsStringAsync(
                 #if NET5_0_OR_GREATER
                                         __effectiveCancellationToken
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::RevAI.Transcript.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::RevAI.AutoSDKHttpResponse<global::RevAI.Transcript>(
+                                    return new global::RevAI.AutoSDKHttpResponse<string>(
                                         statusCode: __response.StatusCode,
                                         headers: global::RevAI.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __value);
+                                        body: __content);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
