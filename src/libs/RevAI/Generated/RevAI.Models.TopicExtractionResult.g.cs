@@ -9,7 +9,7 @@ namespace RevAI
     public sealed partial class TopicExtractionResult
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("topics")]
         public global::System.Collections.Generic.IList<global::RevAI.Topic>? Topics { get; set; }

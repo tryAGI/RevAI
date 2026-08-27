@@ -9,15 +9,15 @@ namespace RevAI
     public enum TranscriptElementType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Punct,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Text,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unknown,
     }

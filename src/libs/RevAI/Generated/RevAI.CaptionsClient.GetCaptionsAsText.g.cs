@@ -161,7 +161,7 @@ namespace RevAI
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
 
             if (accept != default)
@@ -435,7 +435,7 @@ namespace RevAI
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // 
+                            //
                             if ((int)__response.StatusCode == 406)
                             {
                                 string? __content_406 = null;
@@ -467,7 +467,7 @@ namespace RevAI
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // 
+                            //
                             if ((int)__response.StatusCode == 409)
                             {
                                 string? __content_409 = null;

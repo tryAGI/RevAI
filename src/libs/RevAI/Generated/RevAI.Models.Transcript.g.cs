@@ -9,7 +9,7 @@ namespace RevAI
     public sealed partial class Transcript
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("monologues")]
         public global::System.Collections.Generic.IList<global::RevAI.Monologue>? Monologues { get; set; }

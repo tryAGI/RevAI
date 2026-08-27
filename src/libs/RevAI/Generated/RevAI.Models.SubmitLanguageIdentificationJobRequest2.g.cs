@@ -4,7 +4,7 @@
 namespace RevAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SubmitLanguageIdentificationJobRequest2
     {
@@ -21,7 +21,7 @@ namespace RevAI
         public string? Medianame { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("options")]
         public global::RevAI.LanguageIdentificationJobOptions? Options { get; set; }

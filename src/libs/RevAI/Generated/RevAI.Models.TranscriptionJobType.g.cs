@@ -9,7 +9,7 @@ namespace RevAI
     public enum TranscriptionJobType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Async,
     }

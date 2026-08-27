@@ -9,39 +9,39 @@ namespace RevAI
     public enum TranscriptionJobFailure
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DownloadFailure,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DurationExceeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DurationTooShort,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EmptyMedia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InsufficientBalance,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InternalProcessing,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidMedia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvoicingLimitExceeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Transcription,
     }
