@@ -75,7 +75,7 @@ namespace RevAI
         public int? DeleteAfterSeconds { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_vocabularies")]
         public global::System.Collections.Generic.IList<global::RevAI.CustomVocabulary>? CustomVocabularies { get; set; }

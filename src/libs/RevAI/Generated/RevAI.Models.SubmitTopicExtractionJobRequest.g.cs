@@ -4,7 +4,7 @@
 namespace RevAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SubmitTopicExtractionJobRequest
     {
@@ -21,25 +21,25 @@ namespace RevAI
         public string? Text { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
         public string? Metadata { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("callback_url")]
         public string? CallbackUrl { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
         public string? Language { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("delete_after_seconds")]
         public int? DeleteAfterSeconds { get; set; }

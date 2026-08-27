@@ -4,7 +4,7 @@
 namespace RevAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SubmitTranscriptionJobRequest2
     {

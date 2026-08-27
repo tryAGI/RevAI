@@ -4,7 +4,7 @@
 namespace RevAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SubmitTranscriptionJobRequest
     {
@@ -16,13 +16,13 @@ namespace RevAI
         public required string MediaUrl { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
         public string? Metadata { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("callback_url")]
         public string? CallbackUrl { get; set; }
@@ -59,25 +59,25 @@ namespace RevAI
         public bool? FilterProfanity { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speaker_channels_count")]
         public int? SpeakerChannelsCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_vocabulary_id")]
         public string? CustomVocabularyId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("delete_after_seconds")]
         public int? DeleteAfterSeconds { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_vocabularies")]
         public global::System.Collections.Generic.IList<global::RevAI.CustomVocabulary>? CustomVocabularies { get; set; }

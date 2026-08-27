@@ -20,7 +20,7 @@ namespace RevAI.JsonConverters
                     {
                         return global::RevAI.SentimentAnalysisJobStatusExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

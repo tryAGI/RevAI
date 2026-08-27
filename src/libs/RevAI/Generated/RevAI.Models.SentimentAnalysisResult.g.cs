@@ -9,7 +9,7 @@ namespace RevAI
     public sealed partial class SentimentAnalysisResult
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("messages")]
         public global::System.Collections.Generic.IList<global::RevAI.SentimentMessage>? Messages { get; set; }

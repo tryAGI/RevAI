@@ -9,15 +9,15 @@ namespace RevAI
     public enum TranscriptionJobStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Failed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InProgress,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Transcribed,
     }

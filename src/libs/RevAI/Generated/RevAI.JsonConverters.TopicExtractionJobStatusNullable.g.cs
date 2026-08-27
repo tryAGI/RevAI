@@ -20,7 +20,7 @@ namespace RevAI.JsonConverters
                     {
                         return global::RevAI.TopicExtractionJobStatusExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:
