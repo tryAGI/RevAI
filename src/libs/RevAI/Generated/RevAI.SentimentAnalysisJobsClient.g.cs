@@ -35,7 +35,7 @@ namespace RevAI
         /// <inheritdoc/>
         public global::RevAI.AutoSDKClientOptions Options { get; }
 
-        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::RevAI.SourceGenerationContext.Default);
+        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::RevAI.SentimentAnalysisJobsSourceGenerationContext.Default);
 
         /// <summary>
         ///
